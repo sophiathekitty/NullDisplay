@@ -1,4 +1,7 @@
 <?php
+/**
+ * keeps track of the displays on the network
+ */
 class Displays extends clsModel {
     public $table_name = "Displays";
     public $fields = [
@@ -21,21 +24,21 @@ class Displays extends clsModel {
             'Type'=>"varchar(10)",
             'Null'=>"NO",
             'Key'=>"",
-            'Default'=>"",
+            'Default'=>"pitft",
             'Extra'=>""
         ],[
             'Field'=>"room_id",
             'Type'=>"int(11)",
             'Null'=>"NO",
             'Key'=>"",
-            'Default'=>"",
+            'Default'=>"0",
             'Extra'=>""
         ],[
             'Field'=>"state",
             'Type'=>"varchar(20)",
             'Null'=>"NO",
             'Key'=>"",
-            'Default'=>"",
+            'Default'=>"Unknown",
             'Extra'=>""
         ]
     ];
@@ -47,14 +50,28 @@ class Displays extends clsModel {
         if(is_null(Displays::$Displays)) Displays::$Displays = new Displays();
         return Displays::$Displays;
     }
+    /**
+     * get all the displays
+     * @return array list of display data
+     */
     public static function AllDisplays(){
         $displays = Displays::GetInstance();
         return $displays->LoadAll();
     }
+    /**
+     * get a display by mac address
+     * @param string $mac_address the mac address of the server that runs the display
+     * @return array display data
+     */
     public static function MacAddress($mac_address){
         $displays = Displays::GetInstance();
         return $displays->LoadWhere(['mac_address'=>$mac_address]);
     }
+    /**
+     * saves a display
+     * @param array $data the display data
+     * @return array save report
+     */
     public static function SaveDisplay(array $data){
         $displays = Displays::GetInstance();
         $data = $displays->CleanData($data);
