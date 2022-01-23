@@ -74,13 +74,13 @@ class Tasks:
     # show the notifications
     def Draw(self):
         if len(self.tasks) == 0:
-            return Image.open("/var/www/html/plugins/NullDisplay/python/pitft/nulltask.jpg")
+            return Image.open("/var/www/html/plugins/NullDisplay/img/pitft/nulltask.jpg")
         if(self.confirm_button):
-            im = Image.open("/var/www/html/plugins/NullDisplay/python/pitft/task_complete.jpg")
+            im = Image.open("/var/www/html/plugins/NullDisplay/img/pitft/task_complete.jpg")
         elif(self.skip_button):
-            im = Image.open("/var/www/html/plugins/NullDisplay/python/pitft/task_skip.jpg")
+            im = Image.open("/var/www/html/plugins/NullDisplay/img/pitft/task_skip.jpg")
         else:
-            im = Image.open("/var/www/html/plugins/NullDisplay/python/pitft/task.jpg")
+            im = Image.open("/var/www/html/plugins/NullDisplay/img/pitft/task.jpg")
 
         draw = ImageDraw.Draw(im)
         x = 50
