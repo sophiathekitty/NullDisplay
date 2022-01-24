@@ -1,6 +1,6 @@
 .displays .display {
     display: inline-block;
-    width: 1em;
+    width: 1.3em;
     height: 1em;
     margin-left: 0.25em;
     background-position: center center;
@@ -15,7 +15,7 @@
     background-image: url(/plugins/NullDisplay/img/display-night.png);
 }
 .displays .display[state="ready"]{
-    background-image: url(/plugins/NullDisplay/img/display-day.png);
+    background-image: url(/plugins/NullDisplay/img/display-ready.png);
 }
 
 .displays .display[state="day"][online="0"]{
