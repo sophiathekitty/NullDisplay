@@ -1,0 +1,32 @@
+.displays .display {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    margin-left: 0.25em;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-image: url(/plugins/NullDisplay/img/display-unknown.png);
+}
+.displays .display[state="day"]{
+    background-image: url(/plugins/NullDisplay/img/display-day.png);
+}
+.displays .display[state="night"]{
+    background-image: url(/plugins/NullDisplay/img/display-night.png);
+}
+.displays .display[state="ready"]{
+    background-image: url(/plugins/NullDisplay/img/display-day.png);
+}
+
+.displays .display[state="day"][online="0"]{
+    background-image: url(/plugins/NullDisplay/img/display-offline.png),url(/plugins/NullDisplay/img/display-day.png);
+}
+.displays .display[state="night"][online="0"]{
+    background-image: url(/plugins/NullDisplay/img/display-offline.png),url(/plugins/NullDisplay/img/display-night.png);
+}
+.displays .display[state="ready"][online="0"]{
+    background-image: url(/plugins/NullDisplay/img/display-offline.png),url(/plugins/NullDisplay/img/display-ready.png);
+}
+.sensors {
+    white-space: nowrap;
+}
