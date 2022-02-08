@@ -1,6 +1,6 @@
 class DisplaysCollection extends Collection {
     static instance = new DisplaysCollection();
-    static debug_displays = true;
+    static debug_displays = false;
     constructor(debug = DisplaysCollection.debug_displays){
         if(debug) console.log("DisplaysCollection::Constructor");
         super("displays","display","/plugins/NullDisplay/api/displays","/plugins/NullDisplay/api/displays/save","mac_address","collection_",debug);
