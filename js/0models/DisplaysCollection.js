@@ -7,6 +7,7 @@ class DisplaysCollection extends Collection {
     }
 
     roomDisplays(room_id,callBack){
+        this.get_params = "?room_id="+room_id;
         this.getData(json=>{
             var displays = [];
             json.displays.forEach(display=>{

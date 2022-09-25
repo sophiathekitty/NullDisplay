@@ -63,6 +63,15 @@ class Displays extends clsModel {
      * @param string $mac_address the mac address of the server that runs the display
      * @return array display data
      */
+    public static function Room($room_id){
+        $displays = Displays::GetInstance();
+        return $displays->LoadAllWhere(['room_id'=>$room_id]);
+    }
+    /**
+     * get a display by mac address
+     * @param string $mac_address the mac address of the server that runs the display
+     * @return array display data
+     */
     public static function MacAddress($mac_address){
         $displays = Displays::GetInstance();
         return $displays->LoadWhere(['mac_address'=>$mac_address]);
