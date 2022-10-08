@@ -6,7 +6,7 @@
 
 * all in one package for hardware: [Mini Color PiTFT Ad Blocking Pi-Hole Kit - No Soldering!](https://www.adafruit.com/product/4475)
 * raspberry pi zero wh: [Raspberry Pi Zero WH (Zero W with Headers)](https://www.adafruit.com/product/3708)
-* raspberry pi zero wh: [Adafruit Mini PiTFT - 135x240 Color TFT Add-on for Raspberry Pi](https://www.adafruit.com/product/4393)
+* micro display: [Adafruit Mini PiTFT - 135x240 Color TFT Add-on for Raspberry Pi](https://www.adafruit.com/product/4393)
 
 ### Setup Mini PiTFT all in one mega command of doom
 
@@ -49,7 +49,6 @@ sudo pip3 install colour
 ```
 
 see [adafruit](https://learn.adafruit.com/adafruit-mini-pitft-135x240-color-tft-add-on-for-raspberry-pi/python-setup) for examples and documentation of mini pitft
-
 
 ### Setup for eInk display
 
