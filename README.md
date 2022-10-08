@@ -8,7 +8,7 @@
 * raspberry pi zero wh: [Raspberry Pi Zero WH (Zero W with Headers)](https://www.adafruit.com/product/3708)
 * raspberry pi zero wh: [Adafruit Mini PiTFT - 135x240 Color TFT Add-on for Raspberry Pi](https://www.adafruit.com/product/4393)
 
-### Setup Mini PiTFT all in one maga command of doom
+### Setup Mini PiTFT all in one mega command of doom
 
 this is going to be very slow and scary. just let it do its thing. the adafruit-circuitpython-rgb-dislay is the scariest and just kinda hangs. but it's ok. it's installing
 
@@ -16,7 +16,7 @@ this is going to be very slow and scary. just let it do its thing. the adafruit-
 sudo apt-get install python3-pip -y && sudo pip3 install adafruit-circuitpython-rgb-display && sudo pip3 install --upgrade --force-reinstall spidev && sudo apt-get install ttf-dejavu -y && sudo apt-get install python3-pil -y && sudo apt-get install python3-numpy -y
 ```
 
-### Setup Mini PiTFT individual steps.
+### Setup Mini PiTFT individual steps
 
 the adafruit-circuitpython-rgb-dislay is the scariest and just kinda hangs. but it's ok. it's installing. also make sure to turn on the spi interface in the raspi-config
 
