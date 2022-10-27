@@ -41,26 +41,26 @@ class ColorLerp:
         with urllib.request.urlopen("http://localhost/api/colors/?pallet=true") as json_url:
             buf = json_url.read()
             data = json.loads(buf.decode('utf-8'))
-            self.default_color = data['pallet']['general']['display']['default']
+            self.default_color = data['pallet']['general']['text']
 
-            self.hum_min = data['pallet']['weather']['humidity']["0"]
-            self.hum_max = data['pallet']['weather']['humidity']["1"]
+            self.hum_min = data['pallet']['weather']['hum']["0"]
+            self.hum_max = data['pallet']['weather']['hum']["1"]
 
             self.wind_min = data['pallet']['weather']['wind']["0"]
             self.wind_max = data['pallet']['weather']['wind']["1"]
 
-            self.temp_0 = data['pallet']['weather']['temperature']["0"]
-            self.temp_1 = data['pallet']['weather']['temperature']["1"]
-            self.temp_2 = data['pallet']['weather']['temperature']["2"]
-            self.temp_3 = data['pallet']['weather']['temperature']["3"]
-            self.temp_4 = data['pallet']['weather']['temperature']["4"]
-            self.temp_5 = data['pallet']['weather']['temperature']["5"]
-            self.temp_6 = data['pallet']['weather']['temperature']["6"]
-            self.temp_7 = data['pallet']['weather']['temperature']["7"]
-            self.temp_8 = data['pallet']['weather']['temperature']["8"]
-            self.temp_9 = data['pallet']['weather']['temperature']["9"]
-            self.temp_10 = data['pallet']['weather']['temperature']["10"]
-            self.temp_11 = data['pallet']['weather']['temperature']["11"]
+            self.temp_0 = data['pallet']['weather']['temp']["0"]
+            self.temp_1 = data['pallet']['weather']['temp']["1"]
+            self.temp_2 = data['pallet']['weather']['temp']["2"]
+            self.temp_3 = data['pallet']['weather']['temp']["3"]
+            self.temp_4 = data['pallet']['weather']['temp']["4"]
+            self.temp_5 = data['pallet']['weather']['temp']["5"]
+            self.temp_6 = data['pallet']['weather']['temp']["6"]
+            self.temp_7 = data['pallet']['weather']['temp']["7"]
+            self.temp_8 = data['pallet']['weather']['temp']["8"]
+            self.temp_9 = data['pallet']['weather']['temp']["9"]
+            self.temp_10 = data['pallet']['weather']['temp']["10"]
+            self.temp_11 = data['pallet']['weather']['temp']["11"]
 
             self.fourTwenty = data['pallet']['stoner']['fourTwenty']
             self.sevenTen = data['pallet']['stoner']['sevenTen']

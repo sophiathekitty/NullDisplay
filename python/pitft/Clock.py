@@ -114,28 +114,28 @@ class Clock:
     #
     def GetClockImage(self):
         if(self.buttons):
-            icon_path = "/var/www/html/plugins/NullDisplay/python/pitft/clock/night_buttons.jpg"
+            icon_path = "/var/www/html/plugins/NullDisplay/img/pitft/clock/night_buttons.jpg"
             if(self.IsMorning()):
-                icon_path = "/var/www/html/plugins/NullDisplay/python/pitft/clock/morning_buttons.jpg"
+                icon_path = "/var/www/html/plugins/NullDisplay/img/pitft/clock/morning_buttons.jpg"
             if(self.IsEvening()):
-                icon_path = "/var/www/html/plugins/NullDisplay/python/pitft/clock/evening_buttons.jpg"
+                icon_path = "/var/www/html/plugins/NullDisplay/img/pitft/clock/evening_buttons.jpg"
             if(self.IsDay()):
-                icon_path = "/var/www/html/plugins/NullDisplay/python/pitft/clock/day_buttons.jpg"
+                icon_path = "/var/www/html/plugins/NullDisplay/img/pitft/clock/day_buttons.jpg"
         else:
-            icon_path = "/var/www/html/plugins/NullDisplay/python/pitft/clock/night.jpg"
+            icon_path = "/var/www/html/plugins/NullDisplay/img/pitft/clock/night.jpg"
             if(self.IsDay()):
-                icon_path = "/var/www/html/plugins/NullDisplay/python/pitft/clock/day.jpg"
+                icon_path = "/var/www/html/plugins/NullDisplay/img/pitft/clock/day.jpg"
             if(self.IsMorning()):
-                icon_path = "/var/www/html/plugins/NullDisplay/python/pitft/clock/morning.jpg"
+                icon_path = "/var/www/html/plugins/NullDisplay/img/pitft/clock/morning.jpg"
             if(self.IsEvening()):
-                icon_path = "/var/www/html/plugins/NullDisplay/python/pitft/clock/evening.jpg"
+                icon_path = "/var/www/html/plugins/NullDisplay/img/pitft/clock/evening.jpg"
         return Image.open(icon_path)
     # Sunrise image
     def GetSunriseImage(self):
         if(self.buttons):
-            icon_path = "/var/www/html/plugins/NullDisplay/python/pitft/clock/sunrise_buttons.jpg"
+            icon_path = "/var/www/html/plugins/NullDisplay/img/pitft/clock/sunrise_buttons.jpg"
         else:
-            icon_path = "/var/www/html/plugins/NullDisplay/python/pitft/clock/sunrise.jpg"
+            icon_path = "/var/www/html/plugins/NullDisplay/img/pitft/clock/sunrise.jpg"
         return Image.open(icon_path)
     #
     # Draw Time

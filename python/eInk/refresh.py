@@ -71,7 +71,7 @@ with urllib.request.urlopen("http://localhost/extensions/MealPlanner/api/meal/")
 recipe = recipe.replace("&apos;","'")
 side = side.replace("&apos;","'")
 
-with urllib.request.urlopen("http://localhost/plugins/NullWeather/api/weather/live") as json_url:
+with urllib.request.urlopen("http://localhost/plugins/NullWeather/api/weather/") as json_url:
     buf = json_url.read()
     data = json.loads(buf.decode('utf-8'))
     icon = data['weather']['icon']
@@ -126,9 +126,9 @@ if(old_weather_icon != icon or old_forecast_icon != forecast or old_date != day_
         font = inkyphat.ImageFont.truetype(font_file, font_size)
         width, height = font.getsize(recipe)
     if(side != ""):
-        inkyphat.text((5, 80-height), recipe, inkyphat.RED, font=font)
+        inkyphat.text((5, 80-height), recipe, inkyphat.BLACK, font=font)
     else:
-        inkyphat.text((5, 104-10-height), recipe, inkyphat.RED, font=font)
+        inkyphat.text((5, 104-10-height), recipe, inkyphat.BLACK, font=font)
         
     if(side != ""):
         font = inkyphat.ImageFont.truetype(font_file, 10)
@@ -151,7 +151,7 @@ if(old_weather_icon != icon or old_forecast_icon != forecast or old_date != day_
         inkyphat.paste(weather_icon, (150, -4), weather_mask)
     else:
         font = inkyphat.ImageFont.truetype(font_file, 24)
-        inkyphat.text((150, 0), "?", inkyphat.RED, font=font)
+        inkyphat.text((150, 0), "?", inkyphat.BLACK, font=font)
 
 
     inkyphat.show()

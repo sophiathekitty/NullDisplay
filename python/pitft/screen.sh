@@ -7,7 +7,7 @@ echo "-----------------------------------"
 echo "starting python"
 echo "-----------------------------------"
 while true; do
-    sudo python3 /var/www/html/python/pitft/screen.py &
+    sudo python3 /var/www/html/plugins/NullDisplay/python/pitft/screen.py &
     wait $!
     sleep 10
 done

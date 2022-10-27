@@ -35,7 +35,7 @@ display = st7789.ST7789(
 # setup backlight
 backlight = digitalio.DigitalInOut(board.D22)
 backlight.switch_to_output()
-backlight.value = True
+#backlight.value = True
 buttonA = digitalio.DigitalInOut(board.D23)
 buttonB = digitalio.DigitalInOut(board.D24)
 buttonA.switch_to_input()
@@ -58,9 +58,10 @@ slides = Slideshow()
 slides.LoadSlides()
 stoner = Stoner()
 tasks = Tasks()
-
+reset_delay = 10
+print(slides.running)
 # Main loop:
-while True:
+while slides.running:
     #display the image on the screen
     if(stoner.StonerTime() > 0):
         display.image(stoner.Draw(),90)
@@ -80,41 +81,25 @@ while True:
     # handle button inputs
     top_btn = False
     bottom_btn = False
-    if buttonA.value and buttonB.value:
+    if not buttonA.value and not buttonB.value:
         menu_btn = True
+        reset_delay -= 1
+        #print("both buttons pressed? {} | {}".format(buttonA.value,buttonB.value))
+        if(reset_delay == 0):
+            print("menu button reset")
+            slides.running = False
     else:
         menu_btn = False
+        reset_delay = 10
     if buttonB.value and not buttonA.value:  # just button A pressed
-        #display.fill(color565(255, 0, 0))  # red
-        #display.image(im_red,90)
-        #display_index += 1
-        #display_switch = 100
         slides.Wake()
         top_btn = True
         print ("top button pressed?")
     if buttonA.value and not buttonB.value:  # just button B pressed
-        #display.fill(color565(0, 0, 255))  # blue
-        #display.image(im_blue,90)
-        #display_switch -= 10
         bottom_btn = True
         slides.Wake()
-        #slides.Next()
         print ("top button pressed?")
-    if not buttonA.value and not buttonB.value:  # none pressed
-        #display.fill(color565(0, 255, 0))  # green
-        #display.image(im_green,90)
-        #display_index += 1
-        top_btn = False
-        bottom_btn = False
-        print ("no button pressed")
-    #display_switch -= 1
-    #if(display_switch < 0):
-    #    display_switch = 50
-    #    display_index += 1
-    #loop around
-    #if display_index > 2:
-    #    display_index = 0
-    #print ("{} != {}".format(top_btn,top_saved))
+
     if top_btn != top_saved:
         print("top button state change")
         # save top button state

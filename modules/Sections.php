@@ -13,11 +13,13 @@ class SlideSections {
         if(HasPlugin("NullWeather")){
             $sections[] = ["id"=>"2","name"=>"Weather"];
         }
-        /*
+        
         if(HasPlugin("NullSensors")){
-            $sections[] = ["id"=>"3","name"=>"Temperature"];
+            $room_id = Settings::LoadSettingsVar("room_id");
+            $sensors = TemperatureSensors::LoadRoomSensors($room_id);
+            if(count($sensors)) $sections[] = ["id"=>"3","name"=>"Temperature"];
         }
-        */
+        
         /*
         if(HasExtension("MealPlanner")){
             $sections[] = ["id"=>"4","name"=>"Dinner"];

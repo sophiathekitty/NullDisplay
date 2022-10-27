@@ -2,6 +2,7 @@ import time
 import datetime
 from Weather import Weather
 from Clock import Clock
+from Temperature import Temperature
 
 from adafruit_rgb_display.rgb import color565
 import adafruit_rgb_display.st7789 as st7789
@@ -12,6 +13,7 @@ import json
 
 class Slideshow:
     def __init__(self):
+        self.running = True
         self.index = 0
         self.slide_index = 0
         self.delay = 50
@@ -75,6 +77,8 @@ class Slideshow:
                 if(slide['name'] == "Weather"):
                     #weather = Weather()
                     self.AddSlide(Weather(),4)
+                if(slide['name'] == "Temperature"):
+                    self.AddSlide(Temperature(),2)
                 print(str(len(self.slides)) + ". " + slide['name'])
     def AddSlide(self, slide, sections = 3):
         self.slides.append(Slide(slide,sections))
@@ -116,6 +120,7 @@ class Slideshow:
     def DayTime(self):
         #print(self.state)
         if(self.state == "day"):
+            self.WakeNatural()
             return True
         if(self.state == "night"):
             return False
@@ -124,6 +129,7 @@ class Slideshow:
         h = n.hour
         if(self.sunrise < self.sunset):
             if(h >= self.sunrise and h < self.sunset):
+                self.WakeNatural()
                 return True
         elif(h >= self.sunrise or h < self.sunset):
             return True
@@ -135,6 +141,12 @@ class Slideshow:
         #print("snoozing")
         if(self.snooze_step > self.snooze):
             return True
+    def WakeNatural(self):
+        if(self.snooze_step > self.snooze * 10):
+            print ("set running to false")
+            self.running = False
+        if(self.snooze_step > 0):
+            self.Wake()
     def Wake(self):
         self.delay_step = 0
         self.snooze_step = 0

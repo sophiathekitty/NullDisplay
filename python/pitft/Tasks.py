@@ -1,5 +1,6 @@
 import digitalio
 import board
+import datetime
 
 from adafruit_rgb_display.rgb import color565
 import adafruit_rgb_display.st7789 as st7789
@@ -17,26 +18,33 @@ class Tasks:
         self.Load()
         self.text = TextShadow(82, 24, 36)
     def Load(self):
-        with urllib.request.urlopen("http://localhost/api/tasks") as json_url:
+        with urllib.request.urlopen("http://localhost/api/tasks/today/room/") as json_url:
             buf = json_url.read()
             data = json.loads(buf.decode('utf-8'))
             self.tasks = []
             if(data['tasks'] != None):
                 for task in data['tasks']:
                     self.tasks.append(Task(task))
-        self.buttons = False
+        #self.buttons = False
+        self.confirm_button = False
+        self.skip_button = False
         with urllib.request.urlopen("http://localhost/api/settings?name=TopButton&default=Up") as json_url:
             buf = json_url.read()
             data = json.loads(buf.decode('utf-8'))
             if(data == "Down"):
-                self.buttons = True
+                #self.buttons = True
+                self.confirm_button = True
             
         with urllib.request.urlopen("http://localhost/api/settings?name=BottomButton&default=Up") as json_url:
             buf = json_url.read()
             data = json.loads(buf.decode('utf-8'))
             if(data == "Down"):
-                self.buttons = True
-
+                #self.buttons = True
+                self.skip_button = True
+        if self.confirm_button and not self.skip_button:
+            print("complete task?")
+        if self.skip_button and not self.confirm_button:
+            print("skip task?")
         #with urllib.request.urlopen("http://localhost/api/settings") as json_url:
         #    buf = json_url.read()
         #    data = json.loads(buf.decode('utf-8'))
@@ -54,7 +62,10 @@ class Tasks:
         #        self.skip_button = True
     def HasTasks(self):
         self.Load()
-        return len(self.tasks) > 0
+        if len(self.tasks) > 0:
+            task = self.tasks[0]
+            return task.ShowTask()
+        return False
     def CompleteTask(self):
         if len(self.tasks) == 0:
             return
@@ -96,3 +107,10 @@ class Task:
         self.id = json['id']
         self.name = json['name']
         self.assigned_to = json['assigned_to']
+        self.due = json['due']
+    def ShowTask(self):
+        n = datetime.datetime.now()
+        d = datetime.datetime.strptime(self.due,'%Y-%m-%d %H:%M:%S')
+        t = n - d
+        return t.total_seconds() < 60*15 
+        return True
