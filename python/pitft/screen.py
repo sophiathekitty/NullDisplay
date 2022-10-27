@@ -32,10 +32,13 @@ display = st7789.ST7789(
     x_offset=53,
     y_offset=40,
 )
+im = Image.open("/var/www/html/plugins/NullDisplay/img/pitft/null.jpg")
+display.image(im,90)
+
 # setup backlight
 backlight = digitalio.DigitalInOut(board.D22)
 backlight.switch_to_output()
-#backlight.value = True
+backlight.value = True
 buttonA = digitalio.DigitalInOut(board.D23)
 buttonB = digitalio.DigitalInOut(board.D24)
 buttonA.switch_to_input()
@@ -128,3 +131,5 @@ while slides.running:
             slides.slides[slides.index].Next()
             print("button change slide {}.{}".format(slides.index,slides.slides[slides.index].index))
 
+im = Image.open("/var/www/html/plugins/NullDisplay/img/pitft/null.jpg")
+display.image(im,90)

@@ -3,6 +3,7 @@ import board
 
 from adafruit_rgb_display.rgb import color565
 import adafruit_rgb_display.st7789 as st7789
+from PIL import Image
 
 
 # Configuration for CS and DC pins for Raspberry Pi
@@ -25,8 +26,11 @@ display = st7789.ST7789(
 # setup backlight
 backlight = digitalio.DigitalInOut(board.D22)
 backlight.switch_to_output()
-backlight.value = False
 buttonA = digitalio.DigitalInOut(board.D23)
 buttonB = digitalio.DigitalInOut(board.D24)
 buttonA.switch_to_input()
 buttonB.switch_to_input()
+
+im = Image.open("/var/www/html/plugins/NullDisplay/img/pitft/null.jpg")
+display.image(im,90)
+backlight.value = False
