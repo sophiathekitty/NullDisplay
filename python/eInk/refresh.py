@@ -100,10 +100,10 @@ if old_side != side_id:
 # see if the data has changed
 if(old_weather_icon != icon or old_forecast_icon != forecast or old_date != day_of_week or old_recipe != recipe or old_side != side_id):
     # if anything has changed refresh
-    weather_icon = Image.open("../../plugins/NullWeather/img/eInk/"+icon+".png")
+    weather_icon = Image.open("/var/www/html/plugins/NullWeather/img/eInk/"+icon+".png")
     weather_mask = inkyphat.create_mask(weather_icon)
     if(forecast != "clear"):
-        forecast_icon = Image.open("../../plugins/NullWeather/img/eInk/"+forecast+".png")
+        forecast_icon = Image.open("/var/www/html/plugins/NullWeather/img/eInk/"+forecast+".png")
         #forecast_icon_mask = Image.open("../../plugins/NullWeather/img/eInk/"+forecast+"-mask.png")
         forecast_mask = inkyphat.create_mask(forecast_icon)
     font_file = inkyphat.fonts.FredokaOne
