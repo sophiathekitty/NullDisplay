@@ -31,80 +31,26 @@ class Clock:
             data = json.loads(buf.decode('utf-8'))
             if(data == "Down"):
                 self.buttons = True
-            
-            #if(data['settings']['day_of_week'] and data['settings']['day_of_week'] != ""):
-                #self.day_of_week = data['settings']['day_of_week']
-            
-        with urllib.request.urlopen("http://localhost/api/settings?name=sunrise_txt&default=06:00") as json_url:
-            buf = json_url.read()
-            data = json.loads(buf.decode('utf-8'))
-            self.sunrise = data
-        with urllib.request.urlopen("http://localhost/api/settings?name=sunset_txt&default=18:00") as json_url:
-            buf = json_url.read()
-            data = json.loads(buf.decode('utf-8'))
-            self.sunset = data
-        with urllib.request.urlopen("http://localhost/api/clock") as json_url:
+        with urllib.request.urlopen("http://localhost/api/clock/?simple=1") as json_url:
             buf = json_url.read()
             data = json.loads(buf.decode('utf-8'))
             #print(data)
             self.time_of_day = data["time_of_day"]
+            self.sunrise = data["sunrise"]
+            self.sunset = data["sunset"]
     #
     # time of day functions
     #
     def IsDay(self):
         if(self.time_of_day == "day"):
             return True
-        #print("is day?")
-        srht, srmt = self.sunrise.split(":")
-        srh = int(srht)+1
-        srm = int(srmt)
-        ssht, ssmt = self.sunset.split(":")
-        ssh = int(ssht)-1
-        ssm = int(ssmt)
-        h = int(strftime("%-H", localtime()))
-        m = int(strftime("%-M", localtime()))
-        #print(h+" > "+srh+" and "+h+" < "+ssh)
-        if(h > srh and h < ssh):
-            return True
-        #print(h+" == "+srh+" and "+m+" > "+srm)
-        if(h == srh and m > srm):
-            return True
-        #print(h+" == "+ssh+" and "+m+" < "+srm)
-        if(h == ssh and m < srm ):
-            return True
         return False
     def IsMorning(self):
         if(self.time_of_day == "morning"):
             return True
-        sht, smt = self.sunrise.split(":")
-        sh = int(sht)
-        sm = int(smt)
-        h = int(strftime("%-H", localtime()))
-        m = int(strftime("%-M", localtime()))
-        if(h > sh-1 and h < sh+1):
-            return True
-        if(h == sh-1 and m > sm):
-            return True
-        if(h == sh and m < sm ):
-            return True
         return False
     def IsEvening(self):
         if(self.time_of_day == "evening"):
-            return True
-        #print ("is evening?")
-        sht, smt = self.sunset.split(":")
-        sh = int(sht)
-        sm = int(smt)
-        h = int(strftime("%-H", localtime()))
-        m = int(strftime("%-M", localtime()))
-        #print(str(h)+" > "+str(sh-1)+" and "+str(h)+" < "+str(sh+1))
-        if(h > sh-1 and h < sh+1):
-            return True
-        #print(h+" == "+(sh-1)+" and "+m+" > "+sm)
-        if(h == sh-1 and m > sm):
-            return True
-        #print(h+" == "+sh+" and "+m+" < "+sm)
-        if(h == sh and m < sm ):
             return True
         return False
     #
