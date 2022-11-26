@@ -43,10 +43,17 @@ class Clock:
             buf = json_url.read()
             data = json.loads(buf.decode('utf-8'))
             self.sunset = data
+        with urllib.request.urlopen("http://localhost/api/clock") as json_url:
+            buf = json_url.read()
+            data = json.loads(buf.decode('utf-8'))
+            #print(data)
+            self.time_of_day = data["time_of_day"]
     #
     # time of day functions
     #
     def IsDay(self):
+        if(self.time_of_day == "day"):
+            return True
         #print("is day?")
         srht, srmt = self.sunrise.split(":")
         srh = int(srht)+1
@@ -67,6 +74,8 @@ class Clock:
             return True
         return False
     def IsMorning(self):
+        if(self.time_of_day == "morning"):
+            return True
         sht, smt = self.sunrise.split(":")
         sh = int(sht)
         sm = int(smt)
@@ -80,6 +89,8 @@ class Clock:
             return True
         return False
     def IsEvening(self):
+        if(self.time_of_day == "evening"):
+            return True
         #print ("is evening?")
         sht, smt = self.sunset.split(":")
         sh = int(sht)
