@@ -62,7 +62,7 @@ slides.LoadSlides()
 stoner = Stoner()
 tasks = Tasks()
 reset_delay = 10
-print(slides.running)
+#print(slides.running)
 # Main loop:
 while slides.running:
     #display the image on the screen
@@ -97,14 +97,14 @@ while slides.running:
     if buttonB.value and not buttonA.value:  # just button A pressed
         slides.Wake()
         top_btn = True
-        print ("top button pressed?")
+        #print ("top button pressed?")
     if buttonA.value and not buttonB.value:  # just button B pressed
         bottom_btn = True
         slides.Wake()
-        print ("top button pressed?")
+        #print ("top button pressed?")
 
     if top_btn != top_saved:
-        print("top button state change")
+        #print("top button state change")
         # save top button state
         btn_val = "Up"
         if top_btn:
@@ -118,7 +118,7 @@ while slides.running:
             print("button change slide {}.{}".format(slides.index,slides.slide_index))
     #print ("{} != {}".format(bottom_btn,bottom_saved))
     if bottom_btn != bottom_saved:
-        print("bottom button state change")
+        #print("bottom button state change")
         # save bottom button state
         btn_val = "Up"
         if bottom_btn:

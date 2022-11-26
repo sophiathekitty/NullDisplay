@@ -79,7 +79,7 @@ class Slideshow:
                     self.AddSlide(Weather(),4)
                 if(slide['name'] == "Temperature"):
                     self.AddSlide(Temperature(),2)
-                print(str(len(self.slides)) + ". " + slide['name'])
+                #print(str(len(self.slides)) + ". " + slide['name'])
     def AddSlide(self, slide, sections = 3):
         self.slides.append(Slide(slide,sections))
     def Next(self):
@@ -143,7 +143,7 @@ class Slideshow:
             return True
     def WakeNatural(self):
         if(self.snooze_step > self.snooze * 10):
-            print ("set running to false")
+            #print ("set running to false")
             self.running = False
         if(self.snooze_step > 0):
             self.Wake()
