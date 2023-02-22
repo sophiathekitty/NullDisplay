@@ -100,4 +100,4 @@ crontab -e
 ## Tools
 
 * [favicon generator](https://www.favicon-generator.org/)
-* [open source icons](https://game-icons.net/)
+* icons made with [open source icons](https://game-icons.net/)
